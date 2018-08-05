@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:sec="http://www.springframework.org/schema/security"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.2.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="beidanci">
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <bean class="beidanci.CacheMonitor"/>
+
+    <!-- <context:component-scan base-package="net.spring.controller" /> Scans
+        within the base package of the application for @Components to configure as
+        beans <context:component-scan base-package="beidanci" /> -->
+
+    <!-- Spring Security采用就近原则,有多个约束时,从上至下只要找到第一条满足就返回,因此因该将最严格的约束放在最前面,而将最宽松的约束放在最后面.auto-config属性可以让spring
+        security为我们自动配置几种常用的权限控制机制，包括form,anonymous, rememberMe等。当然你也可以手工配置。 -->
+    <sec:http auto-config="false" use-expressions="true"
+              authentication-manager-ref="authenticationManager" entry-point-ref="authenticationEntryPoint">
+        <sec:session-management
+                session-authentication-strategy-ref="sessionAuthenticationStrategy">
+        </sec:session-management>
+        <sec:custom-filter position="FORM_LOGIN_FILTER" ref="myAuthFilter"/>
+        <sec:custom-filter position="CONCURRENT_SESSION_FILTER"
+                           ref="concurrencyFilter"/>
+    </sec:http>
+    <sec:global-method-security
+            pre-post-annotations="enabled" authentication-manager-ref="authenticationManager"
+            secured-annotations="enabled"/>
+
+    <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller"/>
+    <bean id="authenticationEntryPoint"
+          class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg index="0" value="/service/nnbdc-service/showIndexPage.do"/>
+    </bean>
+    <bean id="sessionRegistry"
+          class="org.springframework.security.core.session.SessionRegistryImpl"/>
+    <bean id="concurrencyFilter" class="beidanci.security.MyConcurrentSessionFilter">
+        <constructor-arg index="0" ref="sessionRegistry"/>
+        <constructor-arg index="1" value="/service/nnbdc-service/showIndexPage.do"/>
+    </bean>
+    <bean id="myAuthFilter"
+          class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+        <property name="sessionAuthenticationStrategy" ref="sessionAuthenticationStrategy"/>
+        <property name="authenticationManager" ref="authenticationManager"/>
+    </bean>
+    <bean id="sessionAuthenticationStrategy"
+          class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+        <constructor-arg>
+            <list>
+                <bean
+                        class="org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy">
+                    <constructor-arg ref="sessionRegistry"/>
+                    <property name="maximumSessions" value="1"/>
+                    <property name="exceptionIfMaximumExceeded" value="false"/>
+                </bean>
+                <bean
+                        class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy">
+                </bean>
+                <bean
+                        class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy">
+                    <constructor-arg ref="sessionRegistry"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="userDetailsService" class="beidanci.security.UserDetailsServiceImpl">
+    </bean>
+    <sec:authentication-manager id="authenticationManager">
+        <sec:authentication-provider
+                user-service-ref="userDetailsService">
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+
+    <bean id="httpSessionSecurityContextRepository"
+          class='org.springframework.security.web.context.HttpSessionSecurityContextRepository'>
+        <property name='allowSessionCreation' value='false'/>
+    </bean>
+
+    <bean id="securityContextPersistenceFilter"
+          class="org.springframework.security.web.context.SecurityContextPersistenceFilter">
+        <constructor-arg ref="httpSessionSecurityContextRepository"/>
+    </bean>
+
+    <bean id="filterChainProxy" class="org.springframework.security.web.FilterChainProxy">
+        <constructor-arg>
+            <list>
+                <sec:filter-chain pattern="/*.do"
+                                  filters="securityContextPersistenceFilter"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- 定义事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="transactionInterceptor"
+          class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="transactionManager"/>
+        <!-- 配置事务属性 -->
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 自动代理 -->
+    <bean id="autoproxy"
+          class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <!-- 可以是Service或DAO层（最好是针对业务层*Service） -->
+        <property name="beanNames">
+            <list>
+                <value>*DAO</value>
+                <value>*Service</value>
+                <value>*BO</value>
+                <value>*BOImpl</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>transactionInterceptor</value>
+            </list>
+        </property>
+        <property name="proxyTargetClass" value="true"></property>
+    </bean>
+
+
+    <jee:jndi-lookup id="dataSource" jndi-name="jdbc/bdc"/>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.jdbc.batch_size">50</prop>
+
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+                </prop>
+                <prop key="net.sf.ehcache.configurationResourceName">/ehcache.xml</prop>
+                <!-- <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.SingletonEhCacheProvider
+                    </prop> -->
+                <prop key="hibernate.autoReconnect">true</prop>
+            </props>
+        </property>
+
+        <!--对po实体映射采用包扫描机制 -->
+        <property name="packagesToScan">
+            <list>
+                <value>beidanci.po</value>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>

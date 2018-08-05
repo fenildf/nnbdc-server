@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+        <charset>UTF-8</charset>
+    </appender>
+
+    <appender name="file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.base}/logs/bdc.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.base}/logs/bdc-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+        <charset>UTF-8</charset>
+    </appender>
+
+    <logger name="beidanci" level="INFO">
+    </logger>
+
+
+    <logger name="org.springframework" level="INFO">
+    </logger>
+
+    <logger name="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"
+            level="WARN">
+    </logger>
+
+
+    <logger name="org.apache.commons.httpclient.HttpMethodBase"
+            level="ERROR">
+    </logger>
+
+    <logger name="beidanci.util.BeanUtils" level="INFO">
+    </logger>
+
+    <logger name="beidanci.CacheMonitor" level="INFO">
+    </logger>
+
+    <logger name="org.hibernate.orm.deprecation" level="ERROR">
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="file"/>
+        <appender-ref ref="console"/>
+    </root>
+
+
+</configuration>
