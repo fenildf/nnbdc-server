@@ -13,7 +13,6 @@ import org.hibernate.annotations.CreationTimestamp;
  * 数据库持久化对象（一般也称为Entity）
  *
  * @author MaYubing
- *
  */
 @MappedSuperclass
 public abstract class Po implements java.io.Serializable {

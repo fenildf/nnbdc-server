@@ -2,9 +2,8 @@ package beidanci.socket.game;
 
 /**
  * 保存用户与游戏相关的信息
- * 
+ *
  * @author Administrator
- * 
  */
 public class UserInfo {
 	private Integer userId;

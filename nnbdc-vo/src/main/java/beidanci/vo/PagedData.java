@@ -1,11 +1,9 @@
 package beidanci.vo;
 
-
 /**
  * 分页后一页的数据
- * 
+ *
  * @author Administrator
- * 
  */
 public class PagedData<T> {
 	private PageCtrl pageCtrl;

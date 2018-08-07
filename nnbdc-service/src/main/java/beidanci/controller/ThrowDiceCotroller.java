@@ -35,7 +35,7 @@ public class ThrowDiceCotroller {
 
 	/**
 	 * 掷骰子，并保存到数据库
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @throws IOException

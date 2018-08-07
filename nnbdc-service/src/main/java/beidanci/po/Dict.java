@@ -11,9 +11,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 单词书
- * 
- * @author Administrator
  *
+ * @author Administrator
  */
 @Entity
 @Table(name = "dict", indexes = { @Index(name = "idx_dictname", columnList = "name", unique = true) })
@@ -77,11 +76,15 @@ public class Dict extends Po implements java.io.Serializable {
 		this.dictWords = dictWords;
 	}
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public Dict() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public Dict(String name) {
 		this.name = name;
 	}

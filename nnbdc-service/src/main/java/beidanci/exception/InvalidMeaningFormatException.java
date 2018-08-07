@@ -3,7 +3,7 @@ package beidanci.exception;
 public class InvalidMeaningFormatException extends Exception {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

@@ -8,7 +8,7 @@ public class BatchImportResult {
 	 * 要导入的单词已在生词本中，则忽略之
 	 */
 	private int ignoredCount;
-	
+
 	private String[] failedWords;
 	private String[] failedReasons;
 

@@ -6,9 +6,8 @@ import com.corundumstudio.socketio.SocketIOClient;
 
 /**
  * 保存SocketClient相关信息
- * 
+ *
  * @author Administrator
- * 
  */
 public class SocketClientData {
 	private SocketIOClient socketIOClient;

@@ -31,9 +31,8 @@ import net.sf.json.JsonConfig;
 
 /**
  * 获取等待用户进行翻译的例句。
- * 
+ *
  * @author Administrator
- * 
  */
 @Controller
 @RequestMapping("/getSentenceToTranslate.do")

@@ -33,9 +33,8 @@ import net.sf.json.JsonConfig;
 
 /**
  * 获取某个例句的所有DIY条目。
- * 
+ *
  * @author Administrator
- * 
  */
 @Controller
 @RequestMapping("/getDiyItemsOfSentence.do")

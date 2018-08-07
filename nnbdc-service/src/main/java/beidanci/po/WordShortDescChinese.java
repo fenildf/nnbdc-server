@@ -7,9 +7,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * 用户为单词的英文短描述提供的中文翻译
- * 
- * @author Administrator
  *
+ * @author Administrator
  */
 @Entity
 @Table(name = "word_shortdesc_chinese")

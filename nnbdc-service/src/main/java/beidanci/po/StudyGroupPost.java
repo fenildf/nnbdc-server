@@ -46,11 +46,15 @@ public class StudyGroupPost extends Po implements java.io.Serializable {
 	@OrderBy("updateTime asc")
 	private List<StudyGroupPostReply> studyGroupPostReplies;
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public StudyGroupPost() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public StudyGroupPost(Integer id, User user, StudyGroup studyGroup, String postTitle, String postContent,
 			Integer replyCount, Timestamp lastReplyTime) {
 		this.id = id;
@@ -62,7 +66,9 @@ public class StudyGroupPost extends Po implements java.io.Serializable {
 		this.lastReplyTime = lastReplyTime;
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public StudyGroupPost(Integer id, User user, StudyGroup studyGroup, String postTitle, String postContent,
 			Integer replyCount, Timestamp lastReplyTime, List studyGroupPostReplies) {
 		this.id = id;

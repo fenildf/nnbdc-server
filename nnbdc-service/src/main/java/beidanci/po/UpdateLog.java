@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "update_log")
 public class UpdateLog extends Po implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

@@ -20,11 +20,15 @@ public class Daka extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public Daka() {
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public Daka(DakaId id, User user, String text) {
 		this.id = id;
 		this.user = user;

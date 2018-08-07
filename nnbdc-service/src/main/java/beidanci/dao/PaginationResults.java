@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package beidanci.dao;
 
@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * @author Yongrui Wang
- *
  */
 // Object for pagination
 public class PaginationResults<E> {

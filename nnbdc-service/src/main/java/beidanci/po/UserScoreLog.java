@@ -35,11 +35,15 @@ public class UserScoreLog extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public UserScoreLog() {
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public UserScoreLog(User user, Integer delta, Integer score, Timestamp theTime, String reason) {
 		this.user = user;
 		this.delta = delta;

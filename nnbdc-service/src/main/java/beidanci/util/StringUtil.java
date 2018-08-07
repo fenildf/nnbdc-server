@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package beidanci.util;
 
@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * @author Yongrui Wang
- *
  */
 public class StringUtil {
 
@@ -23,7 +22,7 @@ public class StringUtil {
 
 	/**
 	 * 以字符串格式输出当前日期 日期格式：yyyy-MM-dd HH:mm:ss
-	 * 
+	 *
 	 * @return
 	 */
 	public static Date getStringDate() {

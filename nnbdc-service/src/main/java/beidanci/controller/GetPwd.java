@@ -64,7 +64,7 @@ public class GetPwd {
 
 	/**
 	 * 用Email方式发送用户的密码到用户邮箱
-	 * 
+	 *
 	 * @param toEmail
 	 * @param toName
 	 * @param content

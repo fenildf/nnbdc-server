@@ -7,7 +7,7 @@ import javax.persistence.Embeddable;
 public class MasteredWordId implements java.io.Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +19,9 @@ public class MasteredWordId implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public MasteredWordId() {
 	}
 

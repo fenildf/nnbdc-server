@@ -17,11 +17,15 @@ public class UserSnapshotDailyId implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public UserSnapshotDailyId() {
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public UserSnapshotDailyId(Integer userId, Date theDate) {
 		this.userId = userId;
 		this.theDate = theDate;

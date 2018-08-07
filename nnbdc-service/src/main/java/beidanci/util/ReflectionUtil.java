@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package beidanci.util;
 
@@ -11,7 +11,6 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author Yongrui Wang
- *
  */
 public class ReflectionUtil {
 

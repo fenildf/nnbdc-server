@@ -15,7 +15,9 @@ public class DictWordId implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public DictWordId() {
 	}
 

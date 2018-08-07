@@ -4,10 +4,10 @@ import java.util.List;
 
 public class GetWordResult {
 	public GetWordResult(LearningWordVo learningWord, int learningMode, WordVo[] otherWords, int[] progress,
-						 String soundPath, boolean isFinished, boolean isNoWord, String[] cigens,
-						 WordAdditionalInfoVo[] additionalInfos, List<ErrorReportVo> errorReports, String shortDesc,
-						 boolean shouldEnterReviewMode, WordImageVo[] images, VerbTenseVo[] verbTenses, List<SentenceVo> sentences,
-						 List<WordShortDescChineseVo> shortDescChineses) {
+			String soundPath, boolean isFinished, boolean isNoWord, String[] cigens,
+			WordAdditionalInfoVo[] additionalInfos, List<ErrorReportVo> errorReports, String shortDesc,
+			boolean shouldEnterReviewMode, WordImageVo[] images, VerbTenseVo[] verbTenses, List<SentenceVo> sentences,
+			List<WordShortDescChineseVo> shortDescChineses) {
 		super();
 		this.learningWord = learningWord;
 		this.otherWords = otherWords;

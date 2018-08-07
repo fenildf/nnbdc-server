@@ -9,79 +9,77 @@ import beidanci.util.Utils;
  */
 public class LearningWordVo extends Vo {
 
-    private UserVo user;
+	private UserVo user;
 
-    private Date addTime;
+	private Date addTime;
 
-    private Integer addDay;
+	private Integer addDay;
 
-    private Integer lifeValue;
+	private Integer lifeValue;
 
-    private Date lastLearningDate;
+	private Date lastLearningDate;
 
-    private Integer learningOrder;
+	private Integer learningOrder;
 
-    private WordVo word;
+	private WordVo word;
 
+	public WordVo getWord() {
+		return word;
+	}
 
-    public WordVo getWord() {
-        return word;
-    }
+	public void setWord(WordVo word) {
+		this.word = word;
+	}
 
-    public void setWord(WordVo word) {
-        this.word = word;
-    }
+	public UserVo getUser() {
+		return user;
+	}
 
+	public void setUser(UserVo user) {
+		this.user = user;
+	}
 
-    public UserVo getUser() {
-        return user;
-    }
+	public Date getAddTime() {
+		return addTime;
+	}
 
-    public void setUser(UserVo user) {
-        this.user = user;
-    }
+	public void setAddTime(Date addTime) {
+		this.addTime = addTime;
+	}
 
-    public Date getAddTime() {
-        return addTime;
-    }
+	public Integer getAddDay() {
+		return addDay;
+	}
 
-    public void setAddTime(Date addTime) {
-        this.addTime = addTime;
-    }
+	public void setAddDay(Integer addDay) {
+		this.addDay = addDay;
+	}
 
-    public Integer getAddDay() {
-        return addDay;
-    }
+	public Integer getLifeValue() {
+		return lifeValue;
+	}
 
-    public void setAddDay(Integer addDay) {
-        this.addDay = addDay;
-    }
+	public void setLifeValue(Integer lifeValue) {
+		this.lifeValue = lifeValue;
+	}
 
-    public Integer getLifeValue() {
-        return lifeValue;
-    }
+	public Date getLastLearningDate() {
+		return lastLearningDate;
+	}
 
-    public void setLifeValue(Integer lifeValue) {
-        this.lifeValue = lifeValue;
-    }
+	public void setLastLearningDate(Date lastLearningDate) {
+		this.lastLearningDate = lastLearningDate;
+	}
 
-    public Date getLastLearningDate() {
-        return lastLearningDate;
-    }
+	public Integer getLearningOrder() {
+		return learningOrder;
+	}
 
-    public void setLastLearningDate(Date lastLearningDate) {
-        this.lastLearningDate = lastLearningDate;
-    }
+	public void setLearningOrder(Integer learningOrder) {
+		this.learningOrder = learningOrder;
+	}
 
-    public Integer getLearningOrder() {
-        return learningOrder;
-    }
-
-    public void setLearningOrder(Integer learningOrder) {
-        this.learningOrder = learningOrder;
-    }
-
-    public String getSoundPath(){
-        return Utils.getFileNameOfWordSound(word.getSpell());
-    }
+	public String getSoundPath() {
+		return Utils.getFileNameOfWordSound(word.getSpell());
+	}
 }

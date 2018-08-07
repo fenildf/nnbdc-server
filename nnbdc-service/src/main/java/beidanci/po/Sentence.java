@@ -16,20 +16,28 @@ import org.hibernate.annotations.FetchMode;
 @Cache(region = "wordCache", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Sentence extends Po implements java.io.Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/** 双语例句 */
+	/**
+	 * 双语例句
+	 */
 	public static final String BILINGUAL = "bilingual";
 
-	/** 权威例句 */
+	/**
+	 * 权威例句
+	 */
 	public static final String AUTHORITY = "authority";
 
-	/** 原声例句(音频) */
+	/**
+	 * 原声例句(音频)
+	 */
 	public static final String HUMAN_AUDIO = "human_audio";
 
-	/** 原声例句(视频) */
+	/**
+	 * 原声例句(视频)
+	 */
 	public static final String HUMAN_VIDEO = "human_video";
 
 	@Id
@@ -60,16 +68,22 @@ public class Sentence extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public Sentence() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public Sentence(String english) {
 		this.english = english;
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public Sentence(String english, String chinese, String type) {
 		this.english = english;
 		this.chinese = chinese;

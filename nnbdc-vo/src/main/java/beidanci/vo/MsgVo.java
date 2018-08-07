@@ -1,6 +1,5 @@
 package beidanci.vo;
 
-
 public class MsgVo {
 	private int id;
 	private String fromUserName;

@@ -10,11 +10,11 @@ public class SentenceDiyItemVo extends Vo {
 	private int handCount;
 	private int footCount;
 	private List<SentenceDiyItemRemarkVo> sentenceDiyItemRemarks;
-	
+
 	/**
-     * 是否被当前登录用户评级过？
-     */
-    private Boolean hasBeenVoted;
+	 * 是否被当前登录用户评级过？
+	 */
+	private Boolean hasBeenVoted;
 
 	public SentenceDiyItemVo() {
 

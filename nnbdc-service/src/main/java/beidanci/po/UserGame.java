@@ -29,7 +29,9 @@ public class UserGame extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public UserGame() {
 	}
 

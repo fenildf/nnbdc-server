@@ -25,11 +25,15 @@ public class Cigen extends Po {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public Cigen() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public Cigen(Integer id, String description) {
 		this.id = id;
 		this.description = description;

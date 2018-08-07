@@ -1,6 +1,5 @@
 package beidanci.vo;
 
-
 public class WordShortDescChineseVo extends Vo {
 
 	private Integer id;

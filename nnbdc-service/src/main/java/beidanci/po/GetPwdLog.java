@@ -29,7 +29,9 @@ public class GetPwdLog extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public GetPwdLog() {
 	}
 

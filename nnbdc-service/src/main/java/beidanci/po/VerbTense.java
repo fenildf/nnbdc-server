@@ -9,9 +9,8 @@ import beidanci.vo.TenseType;
 
 /**
  * 动词的时态
- * 
- * @author Administrator
  *
+ * @author Administrator
  */
 @Entity
 @Table(name = "verb_tense")

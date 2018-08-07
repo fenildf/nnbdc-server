@@ -44,7 +44,7 @@ public class GetActiveUsers {
 
 	/**
 	 * 把用户最近访问时间更新为当前时间
-	 * 
+	 *
 	 * @param user
 	 */
 	public static void updateUserAccessTime(User user) {
@@ -56,7 +56,7 @@ public class GetActiveUsers {
 
 	/**
 	 * 随机获取指定数量的活动用户
-	 * 
+	 *
 	 * @return
 	 */
 	public static List<User> getActiveUsers(int count) {

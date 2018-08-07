@@ -4,9 +4,8 @@ import beidanci.socket.game.cmd.UserCmd;
 
 /**
  * 保存用户在游戏中的状态和数据
- * 
+ *
  * @author Administrator
- * 
  */
 public class UserGameData {
 	public UserGameData(Integer userId) {

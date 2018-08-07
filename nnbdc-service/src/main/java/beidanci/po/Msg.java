@@ -29,7 +29,9 @@ public class Msg extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public Msg() {
 	}
 

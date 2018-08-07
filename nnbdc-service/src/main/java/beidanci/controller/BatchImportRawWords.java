@@ -92,7 +92,7 @@ public class BatchImportRawWords {
 
 	/**
 	 * 从上传的文件中批量导入生词
-	 * 
+	 *
 	 * @param rawWordFile
 	 * @throws IOException
 	 * @throws EmptySpellException
@@ -185,7 +185,9 @@ public class BatchImportRawWords {
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-					};
+					}
+
+					;
 				}.start();
 			}
 

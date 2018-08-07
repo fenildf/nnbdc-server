@@ -451,7 +451,7 @@ public class UserBO extends BaseBo<User> {
 
 	/**
 	 * 保存掷骰子得到的牛粪奖励
-	 * 
+	 *
 	 * @param delta
 	 * @param reason
 	 * @param user

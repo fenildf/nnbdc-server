@@ -14,8 +14,7 @@ public class SearchWordResult {
 		this.sentencesWithUGC = sentencesWithUGC;
 	}
 
-	public SearchWordResult(WordVo word, String soundPath,
-                            List<SentenceVo> sentencesWithUGC) {
+	public SearchWordResult(WordVo word, String soundPath, List<SentenceVo> sentencesWithUGC) {
 		super();
 		this.word = word;
 		this.soundPath = soundPath;

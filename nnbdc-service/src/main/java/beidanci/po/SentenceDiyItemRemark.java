@@ -26,7 +26,9 @@ public class SentenceDiyItemRemark extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public SentenceDiyItemRemark() {
 	}
 

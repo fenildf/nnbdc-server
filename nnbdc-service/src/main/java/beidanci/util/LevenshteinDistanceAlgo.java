@@ -2,9 +2,8 @@ package beidanci.util;
 
 /**
  * LevenshteinDistanceAlgo 最小距离算法
- * 
- * @author Administrator
  *
+ * @author Administrator
  */
 public class LevenshteinDistanceAlgo {
 	public static void main(String[] args) {

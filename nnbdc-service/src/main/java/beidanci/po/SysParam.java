@@ -29,17 +29,23 @@ public class SysParam extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public SysParam() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public SysParam(String paramName, String paramValue) {
 		this.paramName = paramName;
 		this.paramValue = paramValue;
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public SysParam(String paramName, String paramValue, String comment) {
 		this.paramName = paramName;
 		this.paramValue = paramValue;

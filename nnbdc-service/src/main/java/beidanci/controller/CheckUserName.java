@@ -20,9 +20,8 @@ import beidanci.util.Util;
 
 /**
  * 验证指定Email（用作用户名）是否存在
- * 
+ *
  * @author Administrator
- * 
  */
 @Controller
 @RequestMapping("/checkEmail.do")

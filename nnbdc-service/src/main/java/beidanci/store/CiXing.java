@@ -56,6 +56,7 @@ public enum CiXing {
 	vbl, vi, VP, vt;
 
 	private static Map<CiXing, String[]> ciXingMap = new HashMap<CiXing, String[]>();
+
 	static {
 		ciXingMap.put(adj, new String[] { "adj.", "a." });
 		ciXingMap.put(adv, new String[] { "adv.", "ad." });

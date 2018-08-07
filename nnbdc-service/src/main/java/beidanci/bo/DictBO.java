@@ -100,7 +100,7 @@ public class DictBO extends BaseBo<Dict> {
 
 	/**
 	 * 完成对指定单词书的编辑
-	 * 
+	 *
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
@@ -138,7 +138,7 @@ public class DictBO extends BaseBo<Dict> {
 
 	/**
 	 * 创建新单词书
-	 * 
+	 *
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */

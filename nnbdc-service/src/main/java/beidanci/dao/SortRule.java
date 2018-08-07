@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package beidanci.dao;
 
@@ -10,7 +10,6 @@ import java.util.List;
  * 排序规则，用于指定对某个字段如何排序（升序还是降序）
  *
  * @author MaYubing
- *
  */
 public class SortRule {
 

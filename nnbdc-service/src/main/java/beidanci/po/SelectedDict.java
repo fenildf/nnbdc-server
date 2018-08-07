@@ -27,11 +27,15 @@ public class SelectedDict extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public SelectedDict() {
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public SelectedDict(SelectedDictId id, Dict dict, User user, Boolean isPrivileged) {
 		this.id = id;
 		this.dict = dict;

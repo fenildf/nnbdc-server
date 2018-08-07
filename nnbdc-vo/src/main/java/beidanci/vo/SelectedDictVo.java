@@ -4,33 +4,33 @@ package beidanci.vo;
  * Created by Administrator on 2015/12/11.
  */
 public class SelectedDictVo extends Vo {
-    private DictVo dict;
+	private DictVo dict;
 
-    private UserVo user;
+	private UserVo user;
 
-    private Boolean isPrivileged;
+	private Boolean isPrivileged;
 
-    public DictVo getDict() {
-        return dict;
-    }
+	public DictVo getDict() {
+		return dict;
+	}
 
-    public void setDict(DictVo dict) {
-        this.dict = dict;
-    }
+	public void setDict(DictVo dict) {
+		this.dict = dict;
+	}
 
-    public UserVo getUser() {
-        return user;
-    }
+	public UserVo getUser() {
+		return user;
+	}
 
-    public void setUser(UserVo user) {
-        this.user = user;
-    }
+	public void setUser(UserVo user) {
+		this.user = user;
+	}
 
-    public Boolean getIsPrivileged() {
-        return isPrivileged;
-    }
+	public Boolean getIsPrivileged() {
+		return isPrivileged;
+	}
 
-    public void setIsPrivileged(Boolean privileged) {
-        isPrivileged = privileged;
-    }
+	public void setIsPrivileged(Boolean privileged) {
+		isPrivileged = privileged;
+	}
 }

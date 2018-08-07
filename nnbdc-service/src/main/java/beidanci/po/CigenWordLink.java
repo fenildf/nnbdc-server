@@ -34,11 +34,15 @@ public class CigenWordLink extends Po implements java.io.Serializable {
 	}
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public CigenWordLink() {
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public CigenWordLink(CigenWordLinkId id, Cigen cigen, String theExplain) {
 		this.id = id;
 		this.cigen = cigen;

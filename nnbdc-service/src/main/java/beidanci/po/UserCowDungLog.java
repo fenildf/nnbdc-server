@@ -35,11 +35,15 @@ public class UserCowDungLog extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public UserCowDungLog() {
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public UserCowDungLog(User user, Integer delta, Integer cowDung, Timestamp theTime, String reason) {
 		this.user = user;
 		this.delta = delta;

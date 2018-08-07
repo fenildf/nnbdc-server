@@ -29,17 +29,23 @@ public class Forum extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public Forum() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public Forum(Integer id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public Forum(Integer id, String name, List managers, List forumPosts) {
 		this.id = id;
 		this.name = name;

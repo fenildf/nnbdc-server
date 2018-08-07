@@ -32,11 +32,15 @@ public class LearningDict extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public LearningDict() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public LearningDict(LearningDictId id, Dict dict, User user) {
 		this.id = id;
 		this.dict = dict;

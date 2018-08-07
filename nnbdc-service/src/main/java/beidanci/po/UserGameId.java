@@ -16,7 +16,9 @@ public class UserGameId implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public UserGameId() {
 	}
 

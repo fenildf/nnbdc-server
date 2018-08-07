@@ -2,7 +2,6 @@ package beidanci.vo;
 
 import java.util.List;
 
-
 /**
  * For example, word "face" has 3 meaning items, as below:
  * <ul>
@@ -15,63 +14,62 @@ import java.util.List;
  * @author Administrator
  */
 public class MeaningItemVo extends Vo {
-    public MeaningItemVo() {
+	public MeaningItemVo() {
 
-    }
+	}
 
-    public MeaningItemVo(String ciXing, String meaning) {
-        this.ciXing = ciXing;
-        this.meaning = meaning;
+	public MeaningItemVo(String ciXing, String meaning) {
+		this.ciXing = ciXing;
+		this.meaning = meaning;
 
-    }
+	}
 
-    private Integer id;
-    private String ciXing;
+	private Integer id;
+	private String ciXing;
 
+	private String meaning;
 
-    private String meaning;
+	public List<SynonymVo> getSynonyms() {
+		return synonyms;
+	}
 
-    public List<SynonymVo> getSynonyms() {
-        return synonyms;
-    }
+	public void setSynonyms(List<SynonymVo> synonyms) {
+		this.synonyms = synonyms;
+	}
 
-    public void setSynonyms(List<SynonymVo> synonyms) {
-        this.synonyms = synonyms;
-    }
+	private List<SynonymVo> synonyms;
 
-    private List<SynonymVo> synonyms;
+	public Integer getId() {
+		return id;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	@Override
+	public String toString() {
+		String meaningStr = meaning;
+		if (!meaningStr.endsWith(";") && !meaningStr.endsWith("；")) {
+			meaningStr += "；";
+		}
 
-    @Override
-    public String toString() {
-        String meaningStr = meaning;
-        if (!meaningStr.endsWith(";") && !meaningStr.endsWith("；")) {
-            meaningStr += "；";
-        }
+		return String.format("%s %s", ciXing, meaningStr);
+	}
 
-        return String.format("%s %s", ciXing, meaningStr);
-    }
+	public String getCiXing() {
+		return ciXing;
+	}
 
-    public String getCiXing() {
-        return ciXing;
-    }
+	public void setCiXing(String ciXing) {
+		this.ciXing = ciXing;
+	}
 
-    public void setCiXing(String ciXing) {
-        this.ciXing = ciXing;
-    }
+	public String getMeaning() {
+		return meaning;
+	}
 
-    public String getMeaning() {
-        return meaning;
-    }
-
-    public void setMeaning(String meaning) {
-        this.meaning = meaning;
-    }
+	public void setMeaning(String meaning) {
+		this.meaning = meaning;
+	}
 }

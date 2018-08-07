@@ -17,13 +17,13 @@ import com.mortennobel.imagescaling.ResampleOp;
 
 /**
  * 图片缩放工具类
- * 
+ *
  * @author sunnymoon
  */
 public class MyImage {
 	/**
 	 * 接收File输出图片
-	 * 
+	 *
 	 * @param file
 	 * @param writePath
 	 * @param targetWidth

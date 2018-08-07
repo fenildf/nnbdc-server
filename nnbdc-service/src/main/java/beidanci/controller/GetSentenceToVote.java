@@ -31,9 +31,8 @@ import net.sf.json.JsonConfig;
 
 /**
  * 获取已经具有了DIY条目，等待用户投票/评论的例句。
- * 
+ *
  * @author Administrator
- * 
  */
 @Controller
 @RequestMapping("/getSentenceToVote.do")

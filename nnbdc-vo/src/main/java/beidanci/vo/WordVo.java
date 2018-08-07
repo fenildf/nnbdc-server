@@ -30,7 +30,7 @@ public class WordVo extends Vo {
 	private String groupInfo;
 
 	private String shortDesc;
-	
+
 	private String meaningStr;
 
 	private List<MeaningItemVo> meaningItems;
@@ -65,10 +65,10 @@ public class WordVo extends Vo {
 	}
 
 	public String getMeaningStr() {
-		if(this.meaningStr!=null){
+		if (this.meaningStr != null) {
 			return meaningStr;
 		}
-		
+
 		StringBuilder sb = new StringBuilder();
 		if (meaningItems != null) {
 			for (MeaningItemVo item : meaningItems) {
@@ -76,7 +76,7 @@ public class WordVo extends Vo {
 			}
 		}
 		String str = sb.toString();
-		if(str.length()>0){
+		if (str.length() > 0) {
 			str = str.substring(0, str.length() - 1);
 		}
 		return str;
@@ -165,17 +165,16 @@ public class WordVo extends Vo {
 		 * SentenceStore sentenceStore = SentenceStore.getInstance();
 		 * 
 		 * if (!sentenceInitialized) { synchronized (sentences) { if
-		 * (!sentenceInitialized) { // 对于短语，词库中会保留对例句的引用, 这里把引用解开
-		 * List<SentenceVo> parsedSentences = new ArrayList<SentenceVo>(); for
-		 * (SentenceVo sentenceRef : sentences) { String englishDigest =
-		 * sentenceRef.getEnglishDigest(); SentenceVo sentence =
-		 * sentenceStore.getSentenceByDigest(englishDigest);
+		 * (!sentenceInitialized) { // 对于短语，词库中会保留对例句的引用, 这里把引用解开 List<SentenceVo>
+		 * parsedSentences = new ArrayList<SentenceVo>(); for (SentenceVo sentenceRef :
+		 * sentences) { String englishDigest = sentenceRef.getEnglishDigest();
+		 * SentenceVo sentence = sentenceStore.getSentenceByDigest(englishDigest);
 		 * parsedSentences.add(sentence); } sentences.clear();
 		 * sentences.addAll(parsedSentences);
 		 * 
 		 * // 在例句库中搜索该单词的例句 List<SentenceVo> sentencesFromStore =
-		 * sentenceStore.getSentencesOfWord(spell); if (sentencesFromStore !=
-		 * null) { sentences.addAll(sentencesFromStore); }
+		 * sentenceStore.getSentencesOfWord(spell); if (sentencesFromStore != null) {
+		 * sentences.addAll(sentencesFromStore); }
 		 * 
 		 * // 每个单词最多只保留6个例句 if (sentences.size() > 6) {
 		 * 
@@ -192,8 +191,7 @@ public class WordVo extends Vo {
 		 * humanAudioSentences.add(sentence); } else if
 		 * (sentence.getType().equalsIgnoreCase(Sentence.HUMAN_VIDEO)) {
 		 * humanVideoSentences.add(sentence); } else {
-		 * log.warn(String.format("发现未知的Sentence Type[%s]",
-		 * sentence.getType())); } }
+		 * log.warn(String.format("发现未知的Sentence Type[%s]", sentence.getType())); } }
 		 * 
 		 * // 对每种例句按照句子长短排序 sortSentencesByLength(humanAudioSentences);
 		 * sortSentencesByLength(humanVideoSentences);
@@ -201,17 +199,16 @@ public class WordVo extends Vo {
 		 * sortSentencesByLength(authoritySentences);
 		 * 
 		 * // 从每种类型中取出若干例句 List<SentenceVo> selectedSentences = new
-		 * ArrayList<SentenceVo>(); int needCount = 0; // 该类型的例句需要的个数 needCount
-		 * += 2; for (SentenceVo sentence : humanAudioSentences) {// 原声例句 if
-		 * (needCount == 0) { break; } selectedSentences.add(sentence);
-		 * needCount--; } needCount += 2; for (SentenceVo sentence :
-		 * bilingualSentences) {// 双语例句 if (needCount == 0) { break; }
-		 * selectedSentences.add(sentence); needCount--; } needCount += 2; for
-		 * (SentenceVo sentence : humanVideoSentences) {// 视频例句 if (needCount ==
-		 * 0) { break; } selectedSentences.add(sentence); needCount--; } for
-		 * (SentenceVo sentence : authoritySentences) {// 权威例句(候补) if (needCount
-		 * == 0) { break; } selectedSentences.add(sentence); needCount--; }
-		 * sentences.clear(); sentences.addAll(selectedSentences); }
+		 * ArrayList<SentenceVo>(); int needCount = 0; // 该类型的例句需要的个数 needCount += 2;
+		 * for (SentenceVo sentence : humanAudioSentences) {// 原声例句 if (needCount == 0)
+		 * { break; } selectedSentences.add(sentence); needCount--; } needCount += 2;
+		 * for (SentenceVo sentence : bilingualSentences) {// 双语例句 if (needCount == 0) {
+		 * break; } selectedSentences.add(sentence); needCount--; } needCount += 2; for
+		 * (SentenceVo sentence : humanVideoSentences) {// 视频例句 if (needCount == 0) {
+		 * break; } selectedSentences.add(sentence); needCount--; } for (SentenceVo
+		 * sentence : authoritySentences) {// 权威例句(候补) if (needCount == 0) { break; }
+		 * selectedSentences.add(sentence); needCount--; } sentences.clear();
+		 * sentences.addAll(selectedSentences); }
 		 * 
 		 * // 检查例句的声音文件是否存在 for (SentenceVo sentence : sentences) {
 		 * sentence.setSoundFileExists(isSentenceSoundFileExists(sentence)); }

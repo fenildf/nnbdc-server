@@ -42,7 +42,9 @@ public class StudyGroupSnapshotDaily extends Po implements java.io.Serializable 
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public StudyGroupSnapshotDaily() {
 	}
 

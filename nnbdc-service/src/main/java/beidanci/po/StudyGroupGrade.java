@@ -28,11 +28,15 @@ public class StudyGroupGrade extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public StudyGroupGrade() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public StudyGroupGrade(Integer id, String name, Integer maxUserCount) {
 		this.id = id;
 		this.name = name;

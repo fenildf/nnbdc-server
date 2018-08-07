@@ -11,16 +11,15 @@ import org.hibernate.annotations.FetchMode;
 
 /**
  * 单词的释义
- * 
- * @author MaYubing
  *
+ * @author MaYubing
  */
 @Entity
 @Table(name = "meaning_item")
 @Cache(region = "wordCache", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class MeaningItem extends Po {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

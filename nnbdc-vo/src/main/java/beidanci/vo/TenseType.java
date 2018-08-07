@@ -2,9 +2,8 @@ package beidanci.vo;
 
 /**
  * 动词的时态类型
- * 
- * @author MaYubing
  *
+ * @author MaYubing
  */
 public enum TenseType {
 	PastTense("过去式"), PastParticiple("过去分词"), PresentParticiple("现在分词");

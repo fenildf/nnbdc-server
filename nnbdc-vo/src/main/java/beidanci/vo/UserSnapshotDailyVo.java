@@ -3,83 +3,82 @@ package beidanci.vo;
 import java.util.Date;
 
 public class UserSnapshotDailyVo extends Vo implements java.io.Serializable {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private UserVo user;
+	private UserVo user;
 
-    private Integer learnedWords;
+	private Integer learnedWords;
 
-    private Integer masteredWords;
+	private Integer masteredWords;
 
-    private Integer cowDung;
+	private Integer cowDung;
 
-    private Integer russiaScore;
+	private Integer russiaScore;
 
-    private Integer dakaDays;
+	private Integer dakaDays;
 
-    public Date getTheDate() {
-        return theDate;
-    }
+	public Date getTheDate() {
+		return theDate;
+	}
 
-    public void setTheDate(Date theDate) {
-        this.theDate = theDate;
-    }
+	public void setTheDate(Date theDate) {
+		this.theDate = theDate;
+	}
 
-    private Date theDate;
+	private Date theDate;
 
-    public UserVo getUser() {
-        return user;
-    }
+	public UserVo getUser() {
+		return user;
+	}
 
-    public void setUser(UserVo user) {
-        this.user = user;
-    }
+	public void setUser(UserVo user) {
+		this.user = user;
+	}
 
-    public Integer getLearnedWords() {
-        return learnedWords;
-    }
+	public Integer getLearnedWords() {
+		return learnedWords;
+	}
 
-    public void setLearnedWords(Integer learnedWords) {
-        this.learnedWords = learnedWords;
-    }
+	public void setLearnedWords(Integer learnedWords) {
+		this.learnedWords = learnedWords;
+	}
 
-    public Integer getMasteredWords() {
-        return masteredWords;
-    }
+	public Integer getMasteredWords() {
+		return masteredWords;
+	}
 
-    public void setMasteredWords(Integer masteredWords) {
-        this.masteredWords = masteredWords;
-    }
+	public void setMasteredWords(Integer masteredWords) {
+		this.masteredWords = masteredWords;
+	}
 
-    public Integer getCowDung() {
-        return cowDung;
-    }
+	public Integer getCowDung() {
+		return cowDung;
+	}
 
-    public void setCowDung(Integer cowDung) {
-        this.cowDung = cowDung;
-    }
+	public void setCowDung(Integer cowDung) {
+		this.cowDung = cowDung;
+	}
 
-    public Integer getRussiaScore() {
-        return russiaScore;
-    }
+	public Integer getRussiaScore() {
+		return russiaScore;
+	}
 
-    public void setRussiaScore(Integer russiaScore) {
-        this.russiaScore = russiaScore;
-    }
+	public void setRussiaScore(Integer russiaScore) {
+		this.russiaScore = russiaScore;
+	}
 
-    public Integer getDakaDays() {
-        return dakaDays;
-    }
+	public Integer getDakaDays() {
+		return dakaDays;
+	}
 
-    public void setDakaDays(Integer dakaDays) {
-        this.dakaDays = dakaDays;
-    }
+	public void setDakaDays(Integer dakaDays) {
+		this.dakaDays = dakaDays;
+	}
 
-    /** default constructor */
-    public UserSnapshotDailyVo() {
-    }
-
-
-
+	/**
+	 * default constructor
+	 */
+	public UserSnapshotDailyVo() {
+	}
 
 }

@@ -48,7 +48,9 @@ public class SentenceDiyItem extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public SentenceDiyItem() {
 	}
 

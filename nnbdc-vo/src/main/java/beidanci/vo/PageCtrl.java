@@ -2,9 +2,8 @@ package beidanci.vo;
 
 /**
  * 分页控制对象
- * 
+ *
  * @author Administrator
- * 
  */
 public class PageCtrl {
 	/**
@@ -18,7 +17,6 @@ public class PageCtrl {
 
 	/**
 	 * 当前页序号（从1开始）
-	 * 
 	 */
 	private long currPageNo;
 
@@ -39,7 +37,7 @@ public class PageCtrl {
 	}
 
 	public int getPageCount() {
-		return (int)Math.round(Math.ceil((totalRecordCount + 0.0) / pageSize));
+		return (int) Math.round(Math.ceil((totalRecordCount + 0.0) / pageSize));
 	}
 
 	public long getCurrPageNo() {

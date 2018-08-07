@@ -199,7 +199,7 @@ public abstract class NamespaceBasedService {
 					// 保存用户相关信息到缓存
 					final UUID sessionId = client.getSessionId();
 					if (usersBySession.containsKey(sessionId)) {// 客户端到socket
-																// server的连接是长连接，即使客户端切换了登录用户，连接也是一直存在的，所以存在多个用户通过同一个连接上报的情况，此时应将之前登录用户的信息清除
+						// server的连接是长连接，即使客户端切换了登录用户，连接也是一直存在的，所以存在多个用户通过同一个连接上报的情况，此时应将之前登录用户的信息清除
 						UserVo oldUser = usersBySession.get(sessionId);
 						sessionsByUser.remove(oldUser);
 						usersBySession.remove(sessionId);

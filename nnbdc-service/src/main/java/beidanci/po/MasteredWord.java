@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class MasteredWord extends Po {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -23,11 +23,15 @@ public class MasteredWord extends Po {
 	@Column(name = "masterAtTime", nullable = false)
 	private Timestamp masterAtTime;
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public MasteredWord() {
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public MasteredWord(MasteredWordId id, User user, Timestamp masterAtTime) {
 		this.id = id;
 		this.user = user;

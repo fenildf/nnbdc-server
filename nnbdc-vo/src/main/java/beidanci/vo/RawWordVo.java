@@ -1,10 +1,10 @@
 package beidanci.vo;
 
-import beidanci.util.Utils;
-
 import java.sql.Timestamp;
 
-public class RawWordVo extends Vo{
+import beidanci.util.Utils;
+
+public class RawWordVo extends Vo {
 	private Integer id;
 	private Timestamp createTime;
 	private String createManner;

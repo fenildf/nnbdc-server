@@ -71,18 +71,24 @@ public class DictGroup extends Po implements java.io.Serializable {
 
 	// Constructors
 
-	/** default constructor */
+	/**
+	 * default constructor
+	 */
 	public DictGroup() {
 	}
 
-	/** minimal constructor */
+	/**
+	 * minimal constructor
+	 */
 	public DictGroup(String name, DictGroup dictGroup, Integer displayIndex) {
 		this.name = name;
 		this.dictGroup = dictGroup;
 		this.displayIndex = displayIndex;
 	}
 
-	/** full constructor */
+	/**
+	 * full constructor
+	 */
 	public DictGroup(String name, DictGroup dictGroup, Integer displayIndex, List dictGroups, List dicts,
 			Set gameHalls) {
 		this.name = name;
@@ -137,7 +143,7 @@ public class DictGroup extends Po implements java.io.Serializable {
 
 	/**
 	 * 获取群组之下的所有单词书，包括子孙群组之下的单词书
-	 * 
+	 *
 	 * @return
 	 */
 	public List<Dict> getAllDicts() {
