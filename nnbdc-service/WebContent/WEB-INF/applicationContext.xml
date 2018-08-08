@@ -50,13 +50,13 @@
     <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller"/>
     <bean id="authenticationEntryPoint"
           class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
-        <constructor-arg index="0" value="/service/nnbdc-service/showIndexPage.do"/>
+        <constructor-arg index="0" value="/service/nnbdc-webui/"/>
     </bean>
     <bean id="sessionRegistry"
           class="org.springframework.security.core.session.SessionRegistryImpl"/>
     <bean id="concurrencyFilter" class="beidanci.security.MyConcurrentSessionFilter">
         <constructor-arg index="0" ref="sessionRegistry"/>
-        <constructor-arg index="1" value="/service/nnbdc-service/showIndexPage.do"/>
+        <constructor-arg index="1" value="/service/nnbdc-webui/"/>
     </bean>
     <bean id="myAuthFilter"
           class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
