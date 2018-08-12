@@ -129,7 +129,7 @@ public class SocketServer {
 		final SocketIONamespace englishRoomNamespace = server.addNamespace("/englishRoom");
 		services.add(new ChatRoomService(englishRoomNamespace, this));
 
-		final SocketIONamespace russiaNamespace = server.addNamespace("/russia");
+		final SocketIONamespace russiaNamespace = server.addNamespace("/all");
 		services.add(new RussiaService(russiaNamespace, this));
 
 		server.start();

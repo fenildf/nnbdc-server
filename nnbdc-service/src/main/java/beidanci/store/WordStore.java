@@ -327,7 +327,7 @@ public class WordStore {
 				}
 
 				if (priority1 == priority2) {
-					if (priority1 == 1) {// 短句，优先选择长度较大的
+					if (priority1 == 2) {// 短句，优先选择长度较大的
 						return o2.getEnglish().length() - o1.getEnglish().length();
 					} else {// 中、长句，优先选择长度较小的
 						return o1.getEnglish().length() - o2.getEnglish().length();

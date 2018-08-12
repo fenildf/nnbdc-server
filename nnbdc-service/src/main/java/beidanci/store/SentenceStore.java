@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -82,9 +83,11 @@ public class SentenceStore {
 		sentencesById.put(sentence.getId(), sentence);
 
 		// 把例句拆分成若干单词，并加入到Map(按单词)
-		String[] words = sentence.getEnglish().split(" |\\.|,");
+		String[] words = sentence.getEnglish().split(" |\\.|,|!|\"|\\?|\\(|\\)|:|;");
 		for (String spell : words) {
-			if (Util.isStringEnglishWord(spell)) {
+			spell = StringUtils.strip(spell, " '-");
+			//if (Util.isStringEnglishWord(spell)) {
+			if (!StringUtils.isEmpty(spell)) {
 				if (!sentencesByWord.containsKey(spell)) {
 					List<SentenceVo> sentenceVos = new ArrayList<SentenceVo>();
 					sentencesByWord.put(spell, sentenceVos);
