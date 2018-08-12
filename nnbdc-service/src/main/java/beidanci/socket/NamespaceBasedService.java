@@ -1,5 +1,6 @@
 package beidanci.socket;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -16,7 +17,7 @@ import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 
 import beidanci.Global;
-import beidanci.socket.chat.ChatObject;
+import beidanci.socket.system.chat.ChatObject;
 import beidanci.util.Util;
 import beidanci.vo.UserVo;
 
@@ -261,4 +262,9 @@ public abstract class NamespaceBasedService {
 		}
 		return null;
 	}
+
+	public List<UserVo> getUsers(){
+		return new ArrayList(usersBySession.values());
+	}
+
 }

@@ -1,4 +1,4 @@
-package beidanci.socket.chat;
+package beidanci.socket.system.chat;
 
 public class ChatObject {
 

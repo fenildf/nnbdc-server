@@ -1,13 +1,13 @@
-package beidanci.socket.game.russia.state;
+package beidanci.socket.system.game.russia.state;
 
 import org.apache.commons.lang.NotImplementedException;
 
 import beidanci.Global;
 import beidanci.po.SysParam;
 import beidanci.po.User;
-import beidanci.socket.game.cmd.UserCmd;
-import beidanci.socket.game.russia.RussiaRoom;
-import beidanci.socket.game.russia.UserGameData;
+import beidanci.socket.UserCmd;
+import beidanci.socket.system.game.russia.RussiaRoom;
+import beidanci.socket.system.game.russia.UserGameData;
 import beidanci.util.Util;
 import beidanci.vo.UserVo;
 

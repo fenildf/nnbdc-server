@@ -1,4 +1,4 @@
-package beidanci.socket.game.cmd;
+package beidanci.socket;
 
 import beidanci.Global;
 import beidanci.po.User;

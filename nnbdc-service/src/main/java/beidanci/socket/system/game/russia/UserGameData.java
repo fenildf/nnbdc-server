@@ -1,6 +1,6 @@
-package beidanci.socket.game.russia;
+package beidanci.socket.system.game.russia;
 
-import beidanci.socket.game.cmd.UserCmd;
+import beidanci.socket.UserCmd;
 
 /**
  * 保存用户在游戏中的状态和数据

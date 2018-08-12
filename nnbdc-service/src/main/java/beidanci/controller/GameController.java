@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import beidanci.Global;
 import beidanci.po.HallGroup;
 import beidanci.po.UserGame;
-import beidanci.socket.game.russia.Hall;
-import beidanci.socket.game.russia.RussiaService;
+import beidanci.socket.system.game.russia.Hall;
+import beidanci.socket.system.game.russia.Russia;
 import beidanci.util.BeanUtils;
 import beidanci.util.Util;
 import beidanci.vo.HallGroupVo;
@@ -39,7 +39,7 @@ public class GameController {
 		result.put("hallGroups", groupVos);
 
 		// 获取所有游戏大厅
-		Map<String, Hall> halls = RussiaService.getInstance().getGameHalls();
+		Map<String, Hall> halls = Russia.getInstance().getGameHalls();
 		result.put("halls", halls);
 
 		// 获取游戏积分榜

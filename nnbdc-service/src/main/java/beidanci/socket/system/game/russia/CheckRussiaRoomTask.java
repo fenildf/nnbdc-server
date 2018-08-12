@@ -1,4 +1,4 @@
-package beidanci.socket.game.russia;
+package beidanci.socket.system.game.russia;
 
 import java.util.ArrayList;
 import java.util.List;

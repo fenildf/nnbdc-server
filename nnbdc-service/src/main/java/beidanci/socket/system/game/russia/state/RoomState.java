@@ -1,7 +1,7 @@
-package beidanci.socket.game.russia.state;
+package beidanci.socket.system.game.russia.state;
 
-import beidanci.socket.game.cmd.UserCmd;
-import beidanci.socket.game.russia.RussiaRoom;
+import beidanci.socket.UserCmd;
+import beidanci.socket.system.game.russia.RussiaRoom;
 import beidanci.vo.UserVo;
 
 public abstract class RoomState {

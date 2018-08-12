@@ -1,4 +1,4 @@
-package beidanci.socket.game.russia;
+package beidanci.socket.system.game.russia;
 
 import java.io.IOException;
 import java.util.*;
@@ -11,9 +11,9 @@ import beidanci.exception.EmptySpellException;
 import beidanci.exception.InvalidMeaningFormatException;
 import beidanci.exception.ParseException;
 import beidanci.po.GameHallId;
-import beidanci.socket.game.cmd.UserCmd;
-import beidanci.socket.game.russia.state.ReadyState;
-import beidanci.socket.game.russia.state.WaitState;
+import beidanci.socket.UserCmd;
+import beidanci.socket.system.game.russia.state.ReadyState;
+import beidanci.socket.system.game.russia.state.WaitState;
 import beidanci.store.WordStore;
 import beidanci.util.Util;
 import beidanci.vo.DictVo;
@@ -176,7 +176,7 @@ public class Hall {
 		if (room != null) {
 			room.userLeave(user);
 		}
-		namespaceService.onUserLeaveHall(user, this);
+		Russia.getInstance().onUserLeaveHall(user, this);
 		logger.info(String.format("%s 离开游戏大厅 %s", Util.getNickNameOfUser(user), name));
 	}
 

@@ -13,8 +13,8 @@ import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 
-import beidanci.socket.chat.ChatRoomService;
-import beidanci.socket.game.russia.RussiaService;
+import beidanci.socket.system.chat.ChatRoomService;
+import beidanci.socket.system.game.russia.RussiaService;
 import beidanci.util.SysParamUtil;
 
 public class SocketServer {

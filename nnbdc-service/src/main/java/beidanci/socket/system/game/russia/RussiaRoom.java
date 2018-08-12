@@ -1,4 +1,4 @@
-package beidanci.socket.game.russia;
+package beidanci.socket.system.game.russia;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -8,13 +8,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import beidanci.socket.chat.ChatObject;
-import beidanci.socket.game.UserInfo;
-import beidanci.socket.game.cmd.UserCmd;
-import beidanci.socket.game.russia.state.EmptyState;
-import beidanci.socket.game.russia.state.ReadyState;
-import beidanci.socket.game.russia.state.RoomState;
-import beidanci.socket.game.russia.state.WaitState;
+import beidanci.socket.system.chat.ChatObject;
+import beidanci.socket.system.game.UserInfo;
+import beidanci.socket.UserCmd;
+import beidanci.socket.system.game.russia.state.EmptyState;
+import beidanci.socket.system.game.russia.state.ReadyState;
+import beidanci.socket.system.game.russia.state.RoomState;
+import beidanci.socket.system.game.russia.state.WaitState;
 import beidanci.util.Util;
 import beidanci.vo.UserGameVo;
 import beidanci.vo.UserVo;

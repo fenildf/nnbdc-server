@@ -1,4 +1,4 @@
-package beidanci.socket.game;
+package beidanci.socket.system.game;
 
 /**
  * 保存用户与游戏相关的信息

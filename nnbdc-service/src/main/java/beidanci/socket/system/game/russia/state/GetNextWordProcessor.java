@@ -1,4 +1,4 @@
-package beidanci.socket.game.russia.state;
+package beidanci.socket.system.game.russia.state;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 import beidanci.Global;
 import beidanci.controller.AddRawWord;
 import beidanci.po.User;
-import beidanci.socket.game.cmd.UserCmd;
-import beidanci.socket.game.russia.RussiaRoom;
-import beidanci.socket.game.russia.UserGameData;
+import beidanci.socket.UserCmd;
+import beidanci.socket.system.game.russia.RussiaRoom;
+import beidanci.socket.system.game.russia.UserGameData;
 import beidanci.util.Utils;
 import beidanci.vo.UserVo;
 import beidanci.vo.WordVo;

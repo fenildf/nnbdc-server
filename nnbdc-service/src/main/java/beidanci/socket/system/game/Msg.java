@@ -1,4 +1,4 @@
-package beidanci.socket.game;
+package beidanci.socket.system.game;
 
 public class Msg {
 	public Msg(String type, String data) {
