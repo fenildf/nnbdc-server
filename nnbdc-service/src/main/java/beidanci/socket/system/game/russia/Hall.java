@@ -12,6 +12,7 @@ import beidanci.exception.InvalidMeaningFormatException;
 import beidanci.exception.ParseException;
 import beidanci.po.GameHallId;
 import beidanci.socket.UserCmd;
+import beidanci.socket.system.System;
 import beidanci.socket.system.game.russia.state.ReadyState;
 import beidanci.socket.system.game.russia.state.WaitState;
 import beidanci.store.WordStore;
@@ -30,19 +31,21 @@ public class Hall {
 	private static Logger logger = LoggerFactory.getLogger(Hall.class);
 	private List<RussiaRoom> readyRooms = new ArrayList<RussiaRoom>();
 	private List<RussiaRoom> waitingRooms = new ArrayList<RussiaRoom>();
-	private RussiaService namespaceService;
+	private SocketService namespaceService;
 	private String name;
 	private List<WordVo> wordList;
+	private System system;
 
 	/**
 	 * 检查游戏室健康状况的定时器
 	 */
 	private Timer timer = new Timer();
 
-	public Hall(String name, RussiaService namespaceService)
+	public Hall(String name, System system, SocketService namespaceService)
 			throws IOException, ParseException, InvalidMeaningFormatException, EmptySpellException {
 		this.name = name;
 		this.namespaceService = namespaceService;
+		this.system = system;
 
 		logger.info(String.format("正在初始化大厅[%s]", name));
 
@@ -176,7 +179,7 @@ public class Hall {
 		if (room != null) {
 			room.userLeave(user);
 		}
-		Russia.getInstance().onUserLeaveHall(user, this);
+		system.onUserLeaveHall(user, this);
 		logger.info(String.format("%s 离开游戏大厅 %s", Util.getNickNameOfUser(user), name));
 	}
 

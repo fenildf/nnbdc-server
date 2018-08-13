@@ -19,14 +19,14 @@ public class CheckRussiaRoomTask extends TimerTask {
 	private static Logger logger = LoggerFactory.getLogger(CheckRussiaRoomTask.class);
 	private List<RussiaRoom> readyRooms;
 	private List<RussiaRoom> waitingRooms;
-	private RussiaService service;
+	private SocketService service;
 
 	/**
 	 * 游戏室所属的大厅
 	 */
 	private Hall hall;
 
-	public CheckRussiaRoomTask(List<RussiaRoom> readyRooms, List<RussiaRoom> waitingRooms, RussiaService service,
+	public CheckRussiaRoomTask(List<RussiaRoom> readyRooms, List<RussiaRoom> waitingRooms, SocketService service,
 			Hall hall) {
 		this.readyRooms = readyRooms;
 		this.waitingRooms = waitingRooms;

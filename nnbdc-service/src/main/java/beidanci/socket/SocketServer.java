@@ -14,7 +14,7 @@ import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 
 import beidanci.socket.system.chat.ChatRoomService;
-import beidanci.socket.system.game.russia.RussiaService;
+import beidanci.socket.system.game.russia.SocketService;
 import beidanci.util.SysParamUtil;
 
 public class SocketServer {
@@ -130,7 +130,7 @@ public class SocketServer {
 		services.add(new ChatRoomService(englishRoomNamespace, this));
 
 		final SocketIONamespace russiaNamespace = server.addNamespace("/all");
-		services.add(new RussiaService(russiaNamespace, this));
+		services.add(new SocketService(russiaNamespace, this));
 
 		server.start();
 		isStarted = true;
