@@ -20,13 +20,19 @@ public class Chat implements System {
 		return instance;
 	}
 
+	private ChatRoom chatRoom = new ChatRoom();
+
 	private Chat() {
 	}
 
 	@Override
 	public void processUserCmd(UserVo user, UserCmd userCmd) throws InvalidMeaningFormatException, EmptySpellException,
 			ParseException, IOException, IllegalAccessException {
-		throw new NotImplementedException();
+		if (userCmd.getCmd().equals("ENTER_CHAT_ROOM")) {
+			chatRoom.userEnter(user);
+		} else if (userCmd.getCmd().equals("USER_SPEAK")) {
+			chatRoom.userSpeak(user, userCmd.getArgs()[0]);
+		}
 	}
 
 	@Override

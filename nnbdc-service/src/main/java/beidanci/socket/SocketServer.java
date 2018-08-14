@@ -13,7 +13,6 @@ import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 
-import beidanci.socket.system.chat.ChatRoomService;
 import beidanci.socket.system.game.russia.SocketService;
 import beidanci.util.SysParamUtil;
 
@@ -22,7 +21,7 @@ public class SocketServer {
 
 	private boolean isStarted = false;
 	private SocketIOServer server;
-	private List<NamespaceBasedService> services = new ArrayList<NamespaceBasedService>();
+	private SocketService socketService ;
 	private static SocketServer instance;
 	private Map<UUID, SocketClientData> socketIOClients = new ConcurrentHashMap<UUID, SocketClientData>();
 	private Timer timer;
@@ -62,9 +61,7 @@ public class SocketServer {
 						i.remove();
 
 						// 通知上层服务连接已经关闭了
-						for (NamespaceBasedService service : services) {
-							service.onSessionClosed(socketClient.getSessionId(), "心跳超时");
-						}
+						socketService.onSessionClosed(socketClient.getSessionId(), "心跳超时");
 					}
 				}
 			} catch (Exception e) {
@@ -123,14 +120,8 @@ public class SocketServer {
 			}
 		});
 
-		final SocketIONamespace commonRoomNamespace = server.addNamespace("/commonRoom");
-		services.add(new ChatRoomService(commonRoomNamespace, this));
-
-		final SocketIONamespace englishRoomNamespace = server.addNamespace("/englishRoom");
-		services.add(new ChatRoomService(englishRoomNamespace, this));
-
-		final SocketIONamespace russiaNamespace = server.addNamespace("/all");
-		services.add(new SocketService(russiaNamespace, this));
+		final SocketIONamespace socketIONamespace = server.addNamespace("/all");
+		socketService = new SocketService(socketIONamespace, this);
 
 		server.start();
 		isStarted = true;

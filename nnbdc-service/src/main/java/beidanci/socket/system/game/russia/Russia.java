@@ -41,7 +41,7 @@ public class Russia implements System {
 	@Override
 	public void processUserCmd(UserVo user, UserCmd userCmd) throws InvalidMeaningFormatException, EmptySpellException,
 			ParseException, IOException, IllegalAccessException {
-		SocketService russiaService = SocketService.getInstance();
+		SocketService socketService = SocketService.getInstance();
 		if (userCmd.getCmd().equals("ENTER_GAME_HALL")) {
 			// 获取用户要进入的游戏大厅
 			String hallName = userCmd.getArgs()[0];
@@ -58,7 +58,7 @@ public class Russia implements System {
 			synchronized (gameHalls) {
 				hall = gameHalls.get(hallName);
 				if (hall == null) {
-					hall = new Hall(hallName, this, russiaService);
+					hall = new Hall(hallName, this, socketService);
 					gameHalls.put(hallName, hall);
 				}
 			}
@@ -76,10 +76,10 @@ public class Russia implements System {
 			int targetUserId = Integer.parseInt(userCmd.getArgs()[0]);
 			String gameType = userCmd.getArgs()[1];
 			int room = Integer.parseInt(userCmd.getArgs()[2]);
-			UserVo targetUser = russiaService.getUserById(targetUserId);
+			UserVo targetUser = socketService.getUserById(targetUserId);
 			String hallName = userCmd.getArgs()[3];
 			if (targetUser != null) {
-				russiaService.sendEventToUser(targetUser, "inviteYouToGame",
+				socketService.sendEventToUser(targetUser, "inviteYouToGame",
 						new Object[] { user, gameType, room, hallName });
 			}
 		} else {

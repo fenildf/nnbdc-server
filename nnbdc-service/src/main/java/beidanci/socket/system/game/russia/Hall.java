@@ -31,7 +31,7 @@ public class Hall {
 	private static Logger logger = LoggerFactory.getLogger(Hall.class);
 	private List<RussiaRoom> readyRooms = new ArrayList<RussiaRoom>();
 	private List<RussiaRoom> waitingRooms = new ArrayList<RussiaRoom>();
-	private SocketService namespaceService;
+	private SocketService socketService;
 	private String name;
 	private List<WordVo> wordList;
 	private System system;
@@ -41,10 +41,10 @@ public class Hall {
 	 */
 	private Timer timer = new Timer();
 
-	public Hall(String name, System system, SocketService namespaceService)
+	public Hall(String name, System system, SocketService socketService)
 			throws IOException, ParseException, InvalidMeaningFormatException, EmptySpellException {
 		this.name = name;
-		this.namespaceService = namespaceService;
+		this.socketService = socketService;
 		this.system = system;
 
 		logger.info(String.format("正在初始化大厅[%s]", name));
@@ -52,7 +52,7 @@ public class Hall {
 		generateWordList();
 
 		// 启动检查游戏室健康情况的定时任务
-		timer.scheduleAtFixedRate(new CheckRussiaRoomTask(readyRooms, waitingRooms, namespaceService, this), 0, 10000);
+		timer.scheduleAtFixedRate(new CheckRussiaRoomTask(readyRooms, waitingRooms, socketService, this), 0, 10000);
 
 		logger.info(String.format("大厅[%s]初始化完成，共有[%d]个单词", name, wordList.size()));
 	}
@@ -165,7 +165,7 @@ public class Hall {
 	}
 
 	public void sendEvent2User(UserVo user, String event, Object data) {
-		namespaceService.sendEventToUser(user, event, data);
+		socketService.sendEventToUser(user, event, data);
 	}
 
 	public void userEnter(UserVo user, int exceptRoom) throws IllegalAccessException {
