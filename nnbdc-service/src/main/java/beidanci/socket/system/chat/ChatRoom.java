@@ -1,24 +1,37 @@
 package beidanci.socket.system.chat;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import beidanci.socket.system.game.russia.SocketService;
 import beidanci.util.Util;
 import beidanci.vo.UserVo;
 
 public class ChatRoom {
-	private List<UserVo> users = new ArrayList<>();
+	private Map<Integer, UserVo> users = new HashMap<>();
 
 	public void userEnter(UserVo user) {
-		users.add(user);
+		users.put(user.getId(), user);
 
 		// 在聊天室内广播用户进入事件
 		broadcast("USER_ENTERED", Util.getNickNameOfUser(user));
+		broadcastUserCount();
+	}
+
+	public void userLeave(UserVo user) {
+		users.remove(user.getId());
+
+		// 在聊天室内广播用户离开事件
+		broadcast("USER_LEFT", Util.getNickNameOfUser(user));
+		broadcastUserCount();
+	}
+
+	private void broadcastUserCount(){
+		broadcast("USER_COUNT", users.size());
 	}
 
 	private void broadcast(String event, Object data) {
-		for (UserVo aUser : users) {
+		for (UserVo aUser : users.values()) {
 			SocketService.getInstance().sendEventToUser(aUser, event, data);
 		}
 	}

@@ -30,6 +30,8 @@ public class Chat implements System {
 			ParseException, IOException, IllegalAccessException {
 		if (userCmd.getCmd().equals("ENTER_CHAT_ROOM")) {
 			chatRoom.userEnter(user);
+		}else if (userCmd.getCmd().equals("LEAVE_CHAT_ROOM")) {
+			chatRoom.userLeave(user);
 		} else if (userCmd.getCmd().equals("USER_SPEAK")) {
 			chatRoom.userSpeak(user, userCmd.getArgs()[0]);
 		}
@@ -37,7 +39,7 @@ public class Chat implements System {
 
 	@Override
 	public void onUserLogout(UserVo user) throws IllegalAccessException {
-		throw new NotImplementedException();
+		chatRoom.userLeave(user);
 	}
 
 	@Override
