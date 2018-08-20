@@ -1105,7 +1105,11 @@ public class Util {
 	 */
 	public static String getClientIP(HttpServletRequest request) {
 		String remoteAddr = request.getHeader("X-Forwarded-For"); // X-Forwarded-For是nginx配置文件中定义的，保存了客户端实际IP地址
-		remoteAddr = remoteAddr.split(",")[0]; // 在有多个nginx的情况下，X-Forwarded-For的值是客户端到服务端路径中每个主机的IP地址（以逗号分隔），其中第一个是客户端的IP地址
+		if (remoteAddr == null) {
+			remoteAddr = request.getRemoteAddr();
+		} else {
+			remoteAddr = remoteAddr.split(",")[0]; // 在有多个nginx的情况下，X-Forwarded-For的值是客户端到服务端路径中每个主机的IP地址（以逗号分隔），其中第一个是客户端的IP地址
+		}
 		return remoteAddr;
 	}
 
