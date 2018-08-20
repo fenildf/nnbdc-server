@@ -296,68 +296,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Copy Files and Execute Command On a Remote Host with Maven antrun-plugin
-                without Ant using SSH and SCP by jarirajari -->
-            <!-- <plugin>
-                <inherited>false</inherited>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>test</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target name="a-test"
-                                description="how to get antrun plugin to work with SCP and SSH">
-
-                                删除WEB-INF/class目录下的内容
-                                <echo message="正在删除WEB-INF/class目录下的内容..." />
-                                <sshexec trust="true" failonerror="true" host="116.255.247.39"
-                                    port="22000" username="root" password="y4v6y5" command="/beforeDeploy_nnbdc.sh"
-                                    timeout="120000" />
-
-                                上传WEB应用根目录下的文件（排除了WEB-INF目录，该目录将在下面上传）
-                                <echo message="正在上传WEB应用根目录下的文件(css/jsp/js等)..." />
-                                <scp trust="true" failonerror="true" verbose="on" sftp="true"
-                                    port="22000"
-                                    todir="root:y4v6y5@116.255.247.39:/opt/apache-tomcat-7.0.33/webapps/nnbdc">
-                                    <fileset dir="${project.basedir}/target/nnbdc"
-                                        excludes="WEB-INF/**/*" />
-                                </scp>
-
-                                上传WEB-INF目录下的文件 （排除了lib目录下的jar文件,以及data目录下的词库文件）
-                                <echo message="正在上传WEB-INF目录下的文件..." />
-                                <scp trust="true" failonerror="true" verbose="on" sftp="true"
-                                    port="22000"
-                                    todir="root:y4v6y5@116.255.247.39:/opt/apache-tomcat-7.0.33/webapps/nnbdc/WEB-INF">
-                                    <fileset dir="${project.basedir}/target/nnbdc/WEB-INF"
-                                        excludes="lib/*,data/**/*" />
-                                </scp>
-                                <taskdef name="scp"
-                                    classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp">
-                                    <classpath refid="maven.plugin.classpath" />
-                                </taskdef>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>ant</groupId>
-                        <artifactId>ant-commons-net</artifactId>
-                        <version>1.6.5</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.ant</groupId>
-                        <artifactId>ant-jsch</artifactId>
-                        <version>1.9.1</version>
-                    </dependency>
-                </dependencies>
-            </plugin> -->
         </plugins>
     </build>
 </project>
