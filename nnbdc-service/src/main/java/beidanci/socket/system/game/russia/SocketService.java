@@ -22,6 +22,7 @@ import beidanci.socket.system.chat.Chat;
 import beidanci.socket.system.chat.ChatObject;
 import beidanci.util.Util;
 import beidanci.vo.UserVo;
+import org.springframework.util.Assert;
 
 public class SocketService {
 	private static Logger log = LoggerFactory.getLogger(SocketService.class);
@@ -129,6 +130,7 @@ public class SocketService {
 		UUID sessionId = sessionsByUser.get(user.getId());
 		if (sessionId != null) {
 			SocketIOClient existingClient = clientsBySession.get(sessionId);
+			Assert.notNull(existingClient);
 			if (existingClient != newClient) {
 				log.info(String.format("关闭了用户[%s]的现有连接（%s|%s）, 原因: %s", user.getDisplayNickName(),
 						existingClient.getRemoteAddress(), existingClient.getSessionId(), reason));
@@ -136,9 +138,9 @@ public class SocketService {
 				existingClient.sendEvent("msg", new ChatObject(Global.getUserBO().getSysUser().getId(), "系统",
 						String.format("连接被关闭, 原因: %s", reason)));
 				existingClient.disconnect();
-				sessionsByUser.remove(user.getId());
-				usersBySession.remove(sessionId);
-				clientsBySession.remove(sessionId);
+				Assert.notNull(sessionsByUser.remove(user.getId()));
+				Assert.notNull(usersBySession.remove(sessionId));
+				Assert.notNull(clientsBySession.remove(sessionId));
 				checkCache();
 				return true;
 			}
@@ -235,7 +237,7 @@ public class SocketService {
 						usersBySession.remove(sessionId);
 						clientsBySession.remove(sessionId);
 					}
-					sessionsByUser.put(user.getId(), client.getSessionId());
+					sessionsByUser.put(user.getId(), sessionId);
 					usersBySession.put(sessionId, user);
 					clientsBySession.put(sessionId, client);
 					checkCache();
