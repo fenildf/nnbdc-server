@@ -197,6 +197,7 @@ public class WordStore {
 			List<SentenceVo> bilingualSentences = new ArrayList<>();
 			List<SentenceVo> humanVideoSentences = new ArrayList<>();
 			List<SentenceVo> authoritySentences = new ArrayList<>();
+			List<SentenceVo> ttsSentences = new ArrayList<>();
 			for (SentenceVo sentence : sentences) {
 				if (sentence.getTheType().equalsIgnoreCase(Sentence.HUMAN_AUDIO)) {
 					humanAudioSentences.add(sentence);
@@ -206,6 +207,8 @@ public class WordStore {
 					humanVideoSentences.add(sentence);
 				} else if (sentence.getTheType().equalsIgnoreCase(Sentence.AUTHORITY)) {
 					authoritySentences.add(sentence);
+				} else if (sentence.getTheType().equalsIgnoreCase(Sentence.TTS)) {
+					ttsSentences.add(sentence);
 				} else {
 					log.warn(String.format("发现未知的Sentence Type[%s]", sentence.getTheType()));
 				}
@@ -216,12 +219,21 @@ public class WordStore {
 			sortSentencesByLength(humanVideoSentences);
 			sortSentencesByLength(bilingualSentences);
 			sortSentencesByLength(authoritySentences);
+			sortHumanAudioSentences(ttsSentences); //TTS例句采用和真人发音例句一样的排序规则
 
 			// 从每种类型中取出若干例句
 			List<SentenceVo> selectedSentences = new ArrayList<>();
 			int needCount = 0; // 该类型的例句需要的个数
 			needCount += 2;
 			for (SentenceVo sentence : humanAudioSentences) {// 原声例句
+				if (needCount == 0) {
+					break;
+				}
+				selectedSentences.add(sentence);
+				needCount--;
+			}
+			needCount += 2;
+			for (SentenceVo sentence : ttsSentences) {// TTS例句
 				if (needCount == 0) {
 					break;
 				}
@@ -253,6 +265,17 @@ public class WordStore {
 			}
 			sentences.clear();
 			sentences.addAll(selectedSentences);
+
+			/**
+			 * 如果当前单词没有足够的真人发音例句，则对该单词选中的例句（最多6个）进行TTS
+			 */
+			if (humanAudioSentences.size() < 2) {
+				for (SentenceVo sentence : selectedSentences) {
+					if (!sentence.getTheType().equals(Sentence.HUMAN_AUDIO)) {
+						SentenceTtsThread.getInstance().schedule(sentence.getId());
+					}
+				}
+			}
 		}
 
 		// 对例句进行排序（真人发音->双语->视频->权威）

@@ -1,5 +1,8 @@
 package beidanci.util;
 
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -148,6 +151,13 @@ public class Utils {
 			}
 		}
 		return entities;
+	}
+
+	public static void saveData2File(String fileName, byte[] data) throws IOException {
+		try (DataOutputStream out = new DataOutputStream(new FileOutputStream(fileName))) {
+			out.write(data);
+			out.close();
+		}
 	}
 
 }

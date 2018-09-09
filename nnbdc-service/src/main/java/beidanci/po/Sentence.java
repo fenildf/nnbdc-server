@@ -40,6 +40,11 @@ public class Sentence extends Po implements java.io.Serializable {
 	 */
 	public static final String HUMAN_VIDEO = "human_video";
 
+	/**
+	 * TTS例句(现在TTS的质量已经非常接近真人了)
+	 */
+	public static final String TTS = "tts";
+
 	@Id
 	@javax.persistence.TableGenerator(name = "id_gen", allocationSize = 20)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "id_gen")

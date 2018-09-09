@@ -65,7 +65,7 @@ public class Util {
 		return json;
 	}
 
-	private static String makeJson(Object data) throws IOException {
+	public static String makeJson(Object data) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setSerializationInclusion(Include.NON_NULL);
 		mapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
@@ -859,10 +859,6 @@ public class Util {
 	 * @return
 	 */
 	public static String makeSentenceDigest(String sentence) {
-		sentence = sentence.toLowerCase();
-		sentence = sentence.replaceAll("[^a-zA-Z ]", " ");
-		sentence = replaceDoubleSpace(sentence);
-		sentence = sentence.trim();
 		return MD5Utils.md5(sentence);
 	}
 
