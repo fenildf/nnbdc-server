@@ -64,11 +64,10 @@ public class SentenceTtsThread extends Thread {
 				final String english = sentence.getEnglish();
 				byte[] sound = IFlyTech.getInstance().tts(english, "en", "xiaoyan", 40);
 				String soundFile = SysParamUtil.getSoundPath() + "/sentence/" + sentence.getEnglishDigest() + ".mp3";
-                soundFile = "/tmp/sentence/" + sentence.getEnglishDigest() + ".mp3"; //测试,待删除
 				Utils.saveData2File(soundFile, sound);
 
 				// 更细例句信息
-				//sentence.setTheType(Sentence.TTS); // 测试，待恢复
+				sentence.setTheType(Sentence.TTS);
 				Global.getSentenceBO().updateEntity(sentence);
 
 				log.info(String.format("成功对例句进行了TTS，例句ID[%d] mp3[%s]", sentenceId, soundFile));

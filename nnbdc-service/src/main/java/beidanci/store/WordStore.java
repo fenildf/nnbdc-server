@@ -269,7 +269,8 @@ public class WordStore {
 			/**
 			 * 如果当前单词没有足够的真人发音例句，则对该单词选中的例句（最多6个）进行TTS
 			 */
-			if (humanAudioSentences.size() < 2) {
+			//if (humanAudioSentences.size() < 2) {
+			if (false) {
 				for (SentenceVo sentence : selectedSentences) {
 					if (!sentence.getTheType().equals(Sentence.HUMAN_AUDIO)) {
 						SentenceTtsThread.getInstance().schedule(sentence.getId());
