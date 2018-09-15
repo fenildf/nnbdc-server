@@ -3,11 +3,12 @@ package beidanci.socket.system.game.russia;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.corundumstudio.socketio.BroadcastOperations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.Assert;
 
 import com.corundumstudio.socketio.AckRequest;
+import com.corundumstudio.socketio.BroadcastOperations;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIONamespace;
 import com.corundumstudio.socketio.listener.ConnectListener;
@@ -22,7 +23,6 @@ import beidanci.socket.system.chat.Chat;
 import beidanci.socket.system.chat.ChatObject;
 import beidanci.util.Util;
 import beidanci.vo.UserVo;
-import org.springframework.util.Assert;
 
 public class SocketService {
 	private static Logger log = LoggerFactory.getLogger(SocketService.class);
@@ -62,7 +62,7 @@ public class SocketService {
 			List<UserVo> users = sys.getIdleUsers(except, count);
 			for (UserVo user : users) {
 				idleUsers.add(user);
-				if(idleUsers.size()>=count){
+				if (idleUsers.size() >= count) {
 					return idleUsers;
 				}
 			}
@@ -138,14 +138,31 @@ public class SocketService {
 				existingClient.sendEvent("msg", new ChatObject(Global.getUserBO().getSysUser().getId(), "系统",
 						String.format("连接被关闭, 原因: %s", reason)));
 				existingClient.disconnect();
-				Assert.notNull(sessionsByUser.remove(user.getId()));
-				Assert.notNull(usersBySession.remove(sessionId));
-				Assert.notNull(clientsBySession.remove(sessionId));
-				checkCache();
+				clearUserCache(user.getId(), sessionId);
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public void addUserCache(UserVo user, SocketIOClient client) {
+		UUID sessionId = client.getSessionId();
+		sessionsByUser.put(user.getId(), sessionId);
+		usersBySession.put(sessionId, user);
+		clientsBySession.put(sessionId, client);
+		checkCache();
+	}
+
+	private void clearUserCache(Integer userId, UUID sessionId) {
+		UUID session = (sessionsByUser.remove(userId));
+		Assert.isTrue(sessionId.equals(session));
+
+		UserVo user = usersBySession.remove(sessionId);
+		Assert.isTrue(userId.equals(user.getId()));
+
+		SocketIOClient client = clientsBySession.remove(sessionId);
+		Assert.isTrue(sessionId.equals(client.getSessionId()));
+		checkCache();
 	}
 
 	private void checkCache() {
@@ -176,10 +193,7 @@ public class SocketService {
 					UserVo userVo = usersBySession.get(sessionId);
 					if (userVo != null) {
 						log.info(String.format("与用户[%s]的连接中断！", userVo.getDisplayNickName()));
-						usersBySession.remove(sessionId);
-						sessionsByUser.remove(userVo.getId());
-						clientsBySession.remove(sessionId);
-						checkCache();
+						clearUserCache(userVo.getId(), sessionId);
 
 						broadcastUserOffline(userVo);
 						onUserLogout(userVo);
@@ -231,16 +245,11 @@ public class SocketService {
 					// 保存用户相关信息到缓存
 					final UUID sessionId = client.getSessionId();
 					if (usersBySession.containsKey(sessionId)) {// 客户端到socket
-						// server的连接是长连接，即使客户端切换了登录用户，连接也是一直存在的，所以存在多个用户通过同一个连接上报的情况，此时应将之前登录用户的信息清除
+																// server的连接是长连接，即使客户端切换了登录用户，连接也是一直存在的，所以存在多个用户通过同一个连接上报的情况，此时应将之前登录用户的信息清除
 						UserVo oldUser = usersBySession.get(sessionId);
-						sessionsByUser.remove(oldUser);
-						usersBySession.remove(sessionId);
-						clientsBySession.remove(sessionId);
+						clearUserCache(oldUser.getId(), sessionId);
 					}
-					sessionsByUser.put(user.getId(), sessionId);
-					usersBySession.put(sessionId, user);
-					clientsBySession.put(sessionId, client);
-					checkCache();
+					addUserCache(user, client);
 
 					// 向所有玩家广播新用户上线信息
 					broadcastUserOnline(user);
@@ -314,7 +323,7 @@ public class SocketService {
 		return new ArrayList(usersBySession.values());
 	}
 
-	public BroadcastOperations getBroadcastOperations(){
+	public BroadcastOperations getBroadcastOperations() {
 		return namespace.getBroadcastOperations();
 	}
 }
