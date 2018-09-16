@@ -1,5 +1,6 @@
 package beidanci;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -26,12 +27,18 @@ public class BdcInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-
+		Date now = new Date();
+		ThreadContext.setEndTime(now);
+		User user = Util.getLoggedInUser();
+		long timeCost = now.getTime() - ThreadContext.getStartTime().getTime();
+		log.info(String.format("用户【%s】已访问[%s] 耗时[%d ms]", user == null ? "null" : Util.getNickNameOfUser(user),
+				request.getRequestURI(), timeCost));
 	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		ThreadContext.setStartTime(new Date());
 		Util.setPageNoCache(response);
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("application/xml;charset=UTF-8");
@@ -50,7 +57,7 @@ public class BdcInterceptor implements HandlerInterceptor {
 		if (request.getRequestURI().indexOf("getMsgs.do") == -1
 				&& request.getRequestURI().indexOf("getEyeMode.do") == -1
 				&& request.getRequestURI().indexOf("getWords.do") == -1) {
-			log.info(String.format("用户【%s】正在访问 %s", user == null ? "null" : Util.getNickNameOfUser(user),
+			log.info(String.format("用户【%s】正在访问[%s]", user == null ? "null" : Util.getNickNameOfUser(user),
 					request.getRequestURI()));
 		}
 

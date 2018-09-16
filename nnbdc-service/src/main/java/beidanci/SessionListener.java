@@ -12,7 +12,8 @@ import beidanci.po.User;
 import beidanci.util.Util;
 import beidanci.vo.UserVo;
 
-public class SessionListener implements HttpSessionListener, HttpSessionAttributeListener {
+public class
+SessionListener implements HttpSessionListener, HttpSessionAttributeListener {
 	private static Logger log = LoggerFactory.getLogger(SessionListener.class);
 	private static int OnlineUsercount = 0;
 
