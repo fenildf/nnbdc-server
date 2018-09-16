@@ -140,6 +140,11 @@ public class Russia implements System {
 		return idleUsers;
 	}
 
+	@Override
+	public String getName() {
+		return SYSTEM_RUSSIA;
+	}
+
 	public Map<String, Hall> getGameHalls() {
 		return gameHalls;
 	}

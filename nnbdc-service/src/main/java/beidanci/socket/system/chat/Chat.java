@@ -51,4 +51,9 @@ public class Chat implements System {
 	public List<UserVo> getIdleUsers(UserVo except, int count) {
 		return new ArrayList<>();
 	}
+
+	@Override
+	public String getName() {
+		return SYSTEM_CHAT;
+	}
 }

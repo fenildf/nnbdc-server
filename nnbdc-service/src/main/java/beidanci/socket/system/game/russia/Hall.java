@@ -35,6 +35,11 @@ public class Hall {
 	private SocketService socketService;
 	private String name;
 	private List<WordVo> wordList;
+
+	public System getSystem() {
+		return system;
+	}
+
 	private System system;
 
 	/**

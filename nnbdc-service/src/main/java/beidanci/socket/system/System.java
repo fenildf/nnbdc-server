@@ -22,4 +22,6 @@ public interface System {
 	void onUserLeaveHall(UserVo user, Hall hall);
 
 	List<UserVo> getIdleUsers(UserVo except, int count);
+
+	String getName();
 }

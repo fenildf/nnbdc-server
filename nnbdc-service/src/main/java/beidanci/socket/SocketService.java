@@ -45,8 +45,10 @@ public class SocketService {
 		instance = this;
 
 		systems = new HashMap<>();
-		systems.put(System.SYSTEM_RUSSIA, Russia.getInstance());
-		systems.put(System.SYSTEM_CHAT, Chat.getInstance());
+		System system = Russia.getInstance();
+		systems.put(system.getName(), system);
+		system = Chat.getInstance();
+		systems.put(system.getName(), system);
 	}
 
 	protected void onUserLogout(UserVo user) throws IllegalAccessException {
