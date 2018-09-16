@@ -3,7 +3,7 @@ package beidanci.socket.system.chat;
 import java.util.HashMap;
 import java.util.Map;
 
-import beidanci.socket.system.game.russia.SocketService;
+import beidanci.socket.SocketService;
 import beidanci.util.Util;
 import beidanci.vo.UserVo;
 

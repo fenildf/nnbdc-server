@@ -1,8 +1,9 @@
-package beidanci.socket.system.game.russia;
+package beidanci.socket;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+import beidanci.socket.system.game.russia.Russia;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -16,8 +17,6 @@ import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 
 import beidanci.Global;
-import beidanci.socket.SocketServer;
-import beidanci.socket.UserCmd;
 import beidanci.socket.system.System;
 import beidanci.socket.system.chat.Chat;
 import beidanci.socket.system.chat.ChatObject;
