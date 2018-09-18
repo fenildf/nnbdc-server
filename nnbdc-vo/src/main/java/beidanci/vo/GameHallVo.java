@@ -13,6 +13,16 @@ public class GameHallVo extends Vo {
 
 	private String hallName;
 
+	private int userCount;
+
+	public int getUserCount() {
+		return userCount;
+	}
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
+	}
+
 	public DictGroupVo getDictGroup() {
 		return dictGroup;
 	}

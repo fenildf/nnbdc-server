@@ -32,6 +32,7 @@ public class GlobalExceptionHandler implements HandlerExceptionResolver {
 						request.getRequestURI()));
 
 				response.setHeader("command", "login");
+				response.setHeader("Access-Control-Expose-Headers", "command");
 				PrintWriter out;
 				out = response.getWriter();
 				response.setContentType("text/plain;charset=UTF-8");

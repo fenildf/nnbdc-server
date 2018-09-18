@@ -13,6 +13,16 @@ public class HallGroupVo extends Vo {
 
 	private List<GameHallVo> gameHalls;
 
+	private int userCount;
+
+	public int getUserCount() {
+		return userCount;
+	}
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
+	}
+
 	public Integer getId() {
 		return id;
 	}
