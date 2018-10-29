@@ -5,12 +5,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import beidanci.vo.UserGameInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import beidanci.socket.UserCmd;
 import beidanci.socket.system.chat.ChatObject;
-import beidanci.socket.system.game.UserInfo;
 import beidanci.socket.system.game.russia.state.EmptyState;
 import beidanci.socket.system.game.russia.state.ReadyState;
 import beidanci.socket.system.game.russia.state.RoomState;
@@ -193,22 +193,22 @@ public class RussiaRoom {
 		for (UserVo user : users.keySet()) {
 
 			// 用户级信息
-			UserInfo userInfo = new UserInfo(user.getId());
-			userInfo.setCowDung(user.getCowDung());
-			userInfo.setScore(user.getGameScore());
-			userInfo.setNickName(Util.getNickNameOfUser(user));
+			UserGameInfo userGameInfo = new UserGameInfo(user.getId());
+			userGameInfo.setCowDung(user.getCowDung());
+			userGameInfo.setScore(user.getGameScore());
+			userGameInfo.setNickName(Util.getNickNameOfUser(user));
 
 			// 游戏级信息
-			userInfo.setWinCount(0);
-			userInfo.setLostCount(0);
+			userGameInfo.setWinCount(0);
+			userGameInfo.setLostCount(0);
 			for (UserGameVo userGame : user.getUserGames()) {
 				if (userGame.getGame().equals("russia")) {
-					userInfo.setWinCount(userGame.getWinCount());
-					userInfo.setLostCount(userGame.getLoseCount());
+					userGameInfo.setWinCount(userGame.getWinCount());
+					userGameInfo.setLostCount(userGame.getLoseCount());
 				}
 			}
 
-			broadcastEvent("userInfo", userInfo);
+			broadcastEvent("userGameInfo", userGameInfo);
 		}
 
 	}

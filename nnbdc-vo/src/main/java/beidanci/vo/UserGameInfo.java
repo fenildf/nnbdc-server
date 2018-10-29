@@ -1,14 +1,14 @@
-package beidanci.socket.system.game;
+package beidanci.vo;
 
 /**
  * 保存用户与游戏相关的信息
  *
  * @author Administrator
  */
-public class UserInfo {
+public class UserGameInfo {
 	private Integer userId;
 
-	public UserInfo(Integer userId) {
+	public UserGameInfo(Integer userId) {
 		super();
 		this.userId = userId;
 	}
