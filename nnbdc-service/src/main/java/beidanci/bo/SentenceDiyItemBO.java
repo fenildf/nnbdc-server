@@ -114,19 +114,20 @@ public class SentenceDiyItemBO extends BaseBo<SentenceDiyItem> {
 		total = total <= 3 ? total : 3;
 		List<SentenceDiyItemVo> diyItemVOs = new ArrayList<SentenceDiyItemVo>();
 		for (int i = 0; i < total; i++) {
-			SentenceDiyItem po = diyItems.get(i);
-			SentenceDiyItemVo vo = BeanUtils.makeVO(po, SentenceDiyItemVo.class,
+			SentenceDiyItem diyItem = diyItems.get(i);
+			SentenceDiyItemVo diyItemVo = BeanUtils.makeVO(diyItem, SentenceDiyItemVo.class,
 					new String[] { "invitedBy", "userGames", "studyGroups" });
 			UserVo author = new UserVo();
-			author.setDisplayNickName(po.getAuthor().getDisplayNickName());
-			author.setUserName(po.getAuthor().getUserName());
-			vo.setAuthor(author);
+			author.setDisplayNickName(diyItem.getAuthor().getDisplayNickName());
+			author.setUserName(diyItem.getAuthor().getUserName());
+			author.setId(diyItem.getAuthor().getId());
+			diyItemVo.setAuthor(author);
 
 			// 判断是否被当前登录用户评价过？
-			boolean hasBeenVoted = sessionData.getVotedSentenceDiyItems().contains(vo.getId());
-			vo.setHasBeenVoted(hasBeenVoted);
+			boolean hasBeenVoted = sessionData.getVotedSentenceDiyItems().contains(diyItemVo.getId());
+			diyItemVo.setHasBeenVoted(hasBeenVoted);
 
-			diyItemVOs.add(vo);
+			diyItemVOs.add(diyItemVo);
 		}
 
 		return diyItemVOs;
