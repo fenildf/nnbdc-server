@@ -108,10 +108,10 @@ public class ReadyState extends RoomState {
 			isPlaying = true;
 
 			// 两位玩家各扣除若干牛粪（按照系统配置）
-			for (UserVo userVo : room.getUsers().keySet()) {
+			/*for (UserVo userVo : room.getUsers().keySet()) {
 				User user2 = Global.getUserBO().findById(userVo.getId());
 				Global.getUserBO().adjustCowDung(user2, cowDungPerGame * (-1), "游戏开始时扣除的牛粪");
-			}
+			}*/
 
 			room.broadcastUsersInfo();
 		}
