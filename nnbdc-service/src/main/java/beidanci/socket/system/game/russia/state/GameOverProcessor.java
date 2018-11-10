@@ -154,6 +154,7 @@ public class GameOverProcessor {
         Global.getUserBO().adjustCowDung(loser, cowDungPerGame * (-1), "游戏胜利惩罚");
 
         // 更新输家用户Vo
+        loserVo.setCowDung(loser.getCowDung());
         loserVo.setGameScore(loser.getGameScore());
 
         // 更新用户排名

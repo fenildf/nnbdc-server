@@ -89,7 +89,8 @@ public class SocketServer {
 		}
 
 		Configuration config = new Configuration();
-		config.setHostname("127.0.0.1");
+		//config.setHostname("127.0.0.1");
+		config.setHostname(SysParamUtil.getSocketServerAddr());
 		config.setPort(SysParamUtil.getSocketServerPort());
 
 		server = new SocketIOServer(config);

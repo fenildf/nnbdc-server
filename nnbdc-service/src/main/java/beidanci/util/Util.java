@@ -686,7 +686,7 @@ public class Util {
 		user.setLastLearningPosition(-1);
 		user.setLastLearningMode(-1);
 		user.setMasteredWordsCount(0);
-		user.setCowDung(0);
+		user.setCowDung(20); // 注册送牛粪
 		user.setThrowDiceChance(0);
 		user.setInvitedBy(invitedBy);
 		user.setInviteAwardTaken(false);
