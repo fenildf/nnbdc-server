@@ -60,7 +60,7 @@ public class SocketServer {
 						i.remove();
 
 						// 通知上层服务连接已经关闭了
-						socketService.onSessionClosed(socketClient.getSessionId(), "心跳超时");
+						socketService.onConnnectionBroken(socketClient.getSessionId(), "心跳超时");
 					}
 				}
 			} catch (Exception e) {

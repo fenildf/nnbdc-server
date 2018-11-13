@@ -43,6 +43,11 @@ public class Chat implements System {
 	}
 
 	@Override
+	public void onConnectionBroken(UserVo user, String reason) {
+		chatRoom.userLeave(user);
+	}
+
+	@Override
 	public void onUserLeaveHall(UserVo user, Hall hall) {
 		throw new NotImplementedException();
 	}

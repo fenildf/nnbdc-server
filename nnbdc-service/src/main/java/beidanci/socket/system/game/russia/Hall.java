@@ -24,7 +24,7 @@ import beidanci.vo.UserVo;
 import beidanci.vo.WordVo;
 
 /**
- * 游戏大厅
+ * Russia游戏大厅
  *
  * @author Administrator
  */

@@ -2,6 +2,7 @@ package beidanci.socket.system;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import beidanci.exception.EmptySpellException;
 import beidanci.exception.InvalidMeaningFormatException;
@@ -11,17 +12,19 @@ import beidanci.socket.system.game.russia.Hall;
 import beidanci.vo.UserVo;
 
 public interface System {
-	String SYSTEM_RUSSIA = "russia";
-	String SYSTEM_CHAT = "chat";
+    String SYSTEM_RUSSIA = "russia";
+    String SYSTEM_CHAT = "chat";
 
-	void processUserCmd(UserVo user, UserCmd userCmd) throws InvalidMeaningFormatException, EmptySpellException,
-			ParseException, IOException, IllegalAccessException;
+    void processUserCmd(UserVo user, UserCmd userCmd) throws InvalidMeaningFormatException, EmptySpellException,
+            ParseException, IOException, IllegalAccessException;
 
-	void onUserLogout(UserVo user) throws IllegalAccessException;
+    void onUserLogout(UserVo user) throws IllegalAccessException;
 
-	void onUserLeaveHall(UserVo user, Hall hall);
+    void onConnectionBroken(UserVo user, String reason) throws IllegalAccessException;
 
-	List<UserVo> getIdleUsers(UserVo except, int count);
+    void onUserLeaveHall(UserVo user, Hall hall);
 
-	String getName();
+    List<UserVo> getIdleUsers(UserVo except, int count);
+
+    String getName();
 }
